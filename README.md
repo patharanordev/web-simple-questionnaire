@@ -1,6 +1,6 @@
-# ~~Simple Questionnaire~~ Simple Quiz App
+# SimpleQuiz
 
-> I will rename the application/repository soon...
+> I will rename the repository soon...
 
 ![demo](assets/demo.gif)
 
@@ -11,10 +11,13 @@
 - [x] Display to Leader board
   - [x] Redux (player info/score for leader board)
   - [x] Generate unique user's ID (using [nanoid](https://github.com/ai/nanoid#readme))
-- [ ] CSS (I will set style with [MUI](https://mui.com/) later)
+- [x] CSS (I will set style with [MUI](https://mui.com/) later)
+- [x] Typescript
+- [x] Container
 
 ## Usage
 
 ```sh
-npm start
+docker-compose -f docker-compose.dev.yml down -v && \
+docker-compose -f docker-compose.dev.yml up --build
 ```
