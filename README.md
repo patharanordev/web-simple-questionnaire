@@ -21,3 +21,12 @@
 docker-compose -f docker-compose.dev.yml down -v && \
 docker-compose -f docker-compose.dev.yml up --build
 ```
+
+## How-to-win ?
+
+You can got high score by focusing on question number:
+
+- Ex. **Question#`5` ?**
+  
+  Correct answer is **5** !!!.
+
