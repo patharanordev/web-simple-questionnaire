@@ -1,22 +1,38 @@
 import * as React from 'react';
 import { Button } from '@mui/material';
-import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid'
 import { connect } from 'react-redux'
 import { recordInfo } from '../store/info/infoSlice'
+import { Dispatch } from 'redux'
 import Question from '../components/Question'
+import LinkTo from '../components/LinkTo'
 
 import { questions } from '../constants'
+import type { 
+  PlayInfo, 
+  QuestionInfo,
+  SelectedChoice
+} from '../interfaces'
 
-const shuffle = (arr) => {
-  return arr
-    .map(value => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value)
+type Props = {
+  recordInfo: Function
 }
 
-class Quiz extends React.Component {
-  constructor(props) {
+type State = {
+  info: PlayInfo
+  questions: Array<QuestionInfo>
+}
+
+// To support sorting any data type
+const shuffle = (arr:any) => {
+  return arr
+    .map((value:any) => ({ value, sort: Math.random() }))
+    .sort((a:any, b:any) => a.sort - b.sort)
+    .map(({ value }:any) => value)
+}
+
+class Quiz extends React.Component<Props, State> {
+  constructor(props:Props) {
     super(props)
     this.state = {
       info: {
@@ -35,12 +51,12 @@ class Quiz extends React.Component {
     // Set unique ID to user
     info.uid = nanoid(10)
     // Shuffle question & choices
-    shuffleQuestions.map((q) => q.choices = shuffle(q.choices))
+    shuffleQuestions.map((q:any) => q.choices = shuffle(q.choices))
 
     this.setState({ info, questions:shuffleQuestions })
   }
 
-  record(data) {
+  record(data:SelectedChoice) {
     const { info } = this.state
     info.quiz[data.qid] = String(data.answer) === String(data.choice) ? 1 : 0
     info.score += info.quiz[data.qid]
@@ -58,29 +74,32 @@ class Quiz extends React.Component {
         <h1>{`Hi "${info.uid}", let's start :)`}</h1>
         
         {
-          questions.map((q, qIndex) => (
+          questions.map((q:QuestionInfo, qIndex:number) => (
             <Question 
+              key={qIndex}
               qid={q.qid}
               qIndex={qIndex}
               question={q.question}
               answer={q.answer}
               choices={q.choices}
-              onClick={(data) => this.record(data)}
+              onClick={(data:SelectedChoice) => this.record(data)}
             />
           ))
         }
         
-        <Button variant='contained' onClick={() => this.onFinish()}>
-          <NavLink to='/leaderboard'>Finish</NavLink>
+        <br/>
+
+        <Button style={{ marginBottom:48 }} variant='contained' onClick={() => this.onFinish()}>
+          <LinkTo to='/leaderboard' buttonName='Finish' />
         </Button>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:Dispatch<any>) => {
   return {
-    recordInfo: (info) => dispatch(recordInfo(info))
+    recordInfo: (info:PlayInfo) => dispatch(recordInfo(info))
   }
 }
 

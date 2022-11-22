@@ -1,7 +1,8 @@
-import React from 'react';
+
+import * as React from 'react';
 import logo from '../logo.svg';
 import Button from '@mui/material/Button';
-import { NavLink } from 'react-router-dom';
+import LinkTo from '../components/LinkTo';
 
 const Home = () => {
   return (
@@ -12,10 +13,12 @@ const Home = () => {
       </p>
       
       <Button variant='contained'>
-        <NavLink to='/quiz'>Start</NavLink>
+        <LinkTo to='/quiz' buttonName='Start' />
       </Button>
     </div>
   );
 }
  
 export default Home;
+
+Home.displayName = 'Home'
