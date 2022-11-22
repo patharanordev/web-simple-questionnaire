@@ -12,7 +12,7 @@ const Home = () => {
       </p>
       
       <Button variant='contained'>
-        <NavLink to='/questionnaire'>Start</NavLink>
+        <NavLink to='/quiz'>Start</NavLink>
       </Button>
     </div>
   );
