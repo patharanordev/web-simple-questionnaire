@@ -12,18 +12,20 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { NavLink } from 'react-router-dom';
 
 import Home from '../screens/Home';
 import LeaderBoard from '../screens/LeaderBoard';
+import LinkTo from '../components/LinkTo';
+
+import { NavItem } from '../interfaces'
 
 const drawerWidth = 240;
-const navItems = [
+const navItems:Array<NavItem> = [
    { label:'Home', link:'/', component:<Home/> },
    { label:'Leader Board', link:'/leaderboard', component:<LeaderBoard/> }
 ];
  
-export default function Navigation(props) {
+export default function Navigation(props:any) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -53,7 +55,7 @@ export default function Navigation(props) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav">
+      <AppBar component="nav" sx={{ bgcolor: '#282c34' }} elevation={0}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -67,14 +69,15 @@ export default function Navigation(props) {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            Simple Quiz
+            SimpleQuiz
           </Typography>
+          <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <Button key={item.label} sx={{ color: '#fff' }}>
-                <NavLink to={item.link}>{item.label}</NavLink>
+                <LinkTo to={item.link} buttonName={item.label} />
               </Button>
             ))}
           </Box>

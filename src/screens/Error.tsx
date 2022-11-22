@@ -1,4 +1,5 @@
-import React from 'react';
+
+import * as React from 'react';
  
 const Error = () => {
     return (
@@ -9,3 +10,5 @@ const Error = () => {
 }
  
 export default Error;
+
+Error.displayName = 'Error'

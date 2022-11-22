@@ -1,4 +1,6 @@
-export const questions = [
+import type { QuestionInfo } from './interfaces'
+
+export const questions:Array<QuestionInfo> = [
   { qid:'qid1', question:'Question#1', answer:'1', choices: [1, 2, 3, 4] }, 
   { qid:'qid2', question:'Question#2', answer:'2', choices: [2, 3, 4, 5] }, 
   { qid:'qid3', question:'Question#3', answer:'3', choices: [3, 4, 5, 6] }, 
