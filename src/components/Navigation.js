@@ -34,7 +34,7 @@ export default function Navigation(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Questionnaire
+      Quiz
       </Typography>
       <Divider />
       <List>
@@ -69,7 +69,7 @@ export default function Navigation(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Simple Questionnaire
+            Simple Quiz
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
