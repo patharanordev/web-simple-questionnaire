@@ -76,7 +76,7 @@ class Quiz extends React.Component<Props, State> {
         {
           questions.map((q:QuestionInfo, qIndex:number) => (
             <Question 
-              key={qIndex}
+              key={`quiz-${qIndex}`}
               qid={q.qid}
               qIndex={qIndex}
               question={q.question}

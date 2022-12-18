@@ -9,6 +9,7 @@ interface PlayInfo {
 }
 
 interface RowContent {
+  key?: string
   index: number
   info: PlayInfo
   onClick?: Function
@@ -23,6 +24,7 @@ interface QuestionInfo {
 }
 
 interface QuestionContent {
+  key?: string
   qid: string
   qIndex: number
   question: string

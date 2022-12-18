@@ -28,6 +28,7 @@ class LeaderBoard extends React.Component<Props, State> {
           ? players.infos.map((info:PlayInfo, index:number) => {
               return (
                 <SummaryRow 
+                  key={`row-${index}`}
                   index={index}
                   info={info}
                 />
