@@ -2,6 +2,7 @@
   "name": "web-simple-questionnaire",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -29,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:ts": "tsc",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!@codemirror)/'",
+    "test:ci": "npm run test -- --coverage --ci --testResultsProcessor=\"jest-junit\"",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -48,6 +51,16 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "runtime": "automatic"
+        }
+      ]
     ]
   }
 }
