@@ -30,7 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:ts": "tsc",
-    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!@codemirror)/'",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!@codemirror)/' --env=jest-environment-jsdom-sixteen",
     "test:ci": "npm run test -- --coverage --ci --testResultsProcessor=\"jest-junit\"",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject"
@@ -62,5 +62,8 @@
         }
       ]
     ]
+  },
+  "devDependencies": {
+    "jest-environment-jsdom-sixteen": "^2.0.0"
   }
 }
